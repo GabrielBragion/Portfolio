@@ -1,0 +1,60 @@
+// Fontes
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+$font-1: "Inter", sans-serif;
+
+// Cores
+
+$cor-fundo: #0F172A;  // navy
+$cor-texto: #E2E8F0;
+$cor-texto-claro: #94A3B8;
+$cor-texto-mais-claro: #64748B;
+$cor-enfase: #5EEAD4;
+$cor-enfase-claro:#102A3B;
+
+
+// Tamanhos das Telas
+
+$large-device: 1060px;
+$medium-device: 760px;
+$small-device: 400px;
+
+// Mixin de media-querie
+
+@mixin device($size){
+  @if $size == large {
+    @media screen and (min-width: #{$large-device}) {
+     @content;
+    }
+  }@else if $size == medium{
+    @media screen and (min-width: #{$medium-device}) and (max-width: #{$large-device - 1}) {
+      @content;
+     }
+  }@else if $size == small{
+    @media screen and (max-width: #{$medium-device - 1}) {
+      @content;
+     }
+  }
+}
+
+@mixin container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: $large-device;
+  margin-inline: auto;
+  position: relative;
+  @include device(medium){
+    max-width: $medium-device;
+    padding-inline: 2rem;
+    gap: 2rem;
+  }
+  @include device(small){
+    max-width: $small-device;
+    padding-inline: 1rem;
+    grid-template-columns: 1fr;
+  }
+}
+
+.container{
+  @include container;
+}

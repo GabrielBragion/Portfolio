@@ -1,0 +1,336 @@
+//  Gerais
+body{
+  font-family: $font-1;
+  background-color: $cor-fundo;
+  color: $cor-texto-claro;
+  overflow-x: hidden;
+}
+.coluna-1{
+  grid-column: 1;
+}
+.coluna-2{
+  grid-column: 2;
+  @include device (small){
+    grid-column: 1;
+  }
+}
+.mouse-effect{
+  position: absolute;
+  top: 0;
+  display: block;
+  z-index: -10;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  box-shadow: 0 0 90px 40px hsla(218, 42%, 36%, 0.1),
+              0 0 70px 60px hsla(218, 42%, 36%, 0.2);
+  filter: blur(2px);
+  &::after{
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+    box-shadow: 0 0 90px 40px hsla(218, 42%, 36%, 0.05),
+                0 0 70px 50px hsla(218, 42%, 36%, 0.05),
+                inset 0 0 90px 40px hsla(218, 42%, 36%, 0.07);
+  }
+}
+main{
+  margin-block: 100px;
+  @include device(small){
+    margin-block: 50px;
+  }
+}
+.titulo{
+  font-size: 48px;
+  font-weight: bold;
+  color: $cor-texto;
+  letter-spacing: -1.2px;
+  @include device(medium){
+    font-size: 32px;
+  }
+  @include device(small){
+    font-size: 32px;
+  }
+}
+.subtitulo{
+  font-weight: 600;
+  color: $cor-texto;
+  @include device(medium){
+    font-size: 14px;
+  }
+}
+section{
+  .section-subtitulo{
+    display: none;
+    @include device(small){
+      display: block;
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
+      color: $cor-texto;
+    }
+  }
+}
+a{
+  color: $cor-texto-claro;
+}
+.card{
+  display: flex;
+  gap: 32px;
+  margin-bottom: 3rem;
+  position: relative;
+  @include device(medium){
+    flex-direction: column;
+    gap: 16px;
+  }
+  @include device (small){
+    flex-direction: column;
+    gap: 16px;
+    padding: .5rem 1rem;
+    margin-bottom: 2rem;
+  }
+  .card-time{
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    color: $cor-texto-mais-claro;
+  }
+  .card-img{
+    @include device(medium){
+      order: 1;
+    }
+    @include device(small){
+      order: 1;
+    }
+  }
+  .card-info{
+    max-width: 384px;
+    h3{
+      font-weight: 600px;
+      color: $cor-texto;
+      margin-bottom: 20px;
+    }
+    p{
+      font-size: 14px;
+      line-height: 21px;
+    }
+    .card-info-lista-tecnologias{
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      li{
+        font-size: 12px;
+        padding: 6px 14px;
+        color: $cor-enfase;
+        background-color: $cor-enfase-claro;
+        border-radius: 32px;
+        font-weight: 500;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        @include device(medium){
+          font-size: 10px;
+          padding: 4px 12px;
+        }
+        @include device(small){
+          font-size: 10px;
+          padding: 4px 12px;
+        }
+      }
+    }
+  }
+  .outbox{
+    height: calc(100% + 32px);
+    width: calc(100% + 48px);
+    display: block;
+    position: absolute;
+    top:-16px;
+    bottom: 0;
+    left: -24px;
+    right: 0;
+    cursor: pointer;
+    z-index: 10;
+    transition: .3s;
+    @include device(small){
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba( 255, 255, 255, 0.04 );
+      border-radius: 4px;
+      -webkit-box-shadow: 0px -1px 0px 1px rgba( 255, 255, 255, 0.10 );
+      -moz-box-shadow: 0px -1px 0px 1px rgba( 255, 255, 255, 0.10 );
+      box-shadow: 0px -1px 0px 1px rgba( 255, 255, 255, 0.10 );
+    }
+    &:hover{
+      background: rgba( 255, 255, 255, 0.04 );
+      border-radius: 4px;
+      -webkit-box-shadow: 0px -1px 0px 1px rgba( 255, 255, 255, 0.10 );
+      -moz-box-shadow: 0px -1px 0px 1px rgba( 255, 255, 255, 0.10 );
+      box-shadow: 0px -1px 0px 1px rgba( 255, 255, 255, 0.10 );
+    }
+  }&:hover .card-titulo{
+    color: $cor-enfase;
+  }&:hover .svg{
+    fill: $cor-enfase;
+  }&:hover svg{
+    transform: translate3d(3px,-3px,0);
+    transition: .3s;
+  }
+}
+
+.link{
+  color: $cor-texto;
+  font-weight: 600;
+  transition: .3s;
+  &:hover{
+    color: $cor-enfase;
+  }
+  &:hover .svg{
+    fill: $cor-enfase;
+  }&:hover svg{
+    transform: translate3d(3px,-3px,0);
+    transition: .3s;
+  }
+}
+
+// Intro
+
+.intro{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: calc(100dvh - 200px);
+  position: fixed;
+  @include device(small){
+    position: inherit;
+    height: fit-content;
+    margin-bottom: 100px;
+  }
+}
+
+.intro-info{
+  .subtitulo{
+    margin-block: 10px 20px;
+    @include device(medium){
+      margin-block: 5px 15px;
+    }
+  }
+  .descricao{
+    max-width: 300px;
+    letter-spacing: -0.5px;
+    line-height: 24px;
+    @include device(medium){
+      font-size: 14px;
+      line-height: 20px;
+    }
+    @include device(small){
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.intro-menu{
+  ul{
+    li{
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1.2px;
+      transition: .3s;
+      color: $cor-texto-mais-claro;
+      width: fit-content;
+      cursor: pointer;
+      padding-block: 1rem;
+      &::before{
+        display: inline-block;
+        content: "";
+        height: 2px;
+        width: 32px;
+        background-color: $cor-texto-mais-claro;
+        margin-right: 1rem;
+        transition: .2s;
+      }
+      &:hover, &.active{
+        color: $cor-texto;
+        &::before{
+          background-color: $cor-texto;
+          width: 64px;
+        }
+      }
+    }
+    .enfase{
+      color: $cor-enfase;
+      opacity: .5;
+      &::before{
+        background-color: $cor-enfase;
+      }
+      &:hover{
+        color: $cor-enfase;
+        opacity: 1;
+        &::before{
+          background-color: $cor-enfase;
+        }
+      }
+    }
+  }
+  @include device(small){
+    display: none;
+  }
+}
+.intro-menu ul a{
+  cursor: initial;
+}
+
+.intro-redes-sociais{
+  display: flex;
+  gap: 20px;
+  .svg{
+    transition: .3s;
+  }
+  a g:hover .svg{
+      fill: $cor-texto;
+  }
+}
+
+
+// About
+
+.about{
+  margin-bottom: calc(100px - 20px);
+  @include device (medium){
+    margin-bottom: 30px;
+  }
+  p{
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 10px;
+
+    @include device(large){
+      line-height: 26px;
+      font-size: 16px;
+      margin-bottom: 20px;
+
+    }
+  }
+}
+
+//Experience
+
+.experience{
+  margin-bottom: 100px;
+}
+
+//Credits
+
+.credits{
+  margin-top: 100px;
+  p{
+    font-size: 14px;
+    line-height: 20px;
+    color: $cor-texto-mais-claro;
+  }
+}
